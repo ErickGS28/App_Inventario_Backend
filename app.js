@@ -6,13 +6,13 @@ const bodyParser = require("body-parser");
 
 const personasRoutes = require("./routes/persona.routes");
 const productosRoutes = require("./routes/producto.routes");
-
+const asignacionProductoRoutes = require("./routes/asignacionProducto.routes");
 const app = express();
-const PORT = 3000;
+const PORT = 3001;
 app.use(bodyParser.json());
 app.use("/api/personas", personasRoutes);
 app.use("/api/productos", productosRoutes);
-
+app.use("/api/asignacionproducdo", asignacionProductoRoutes);
 // conexion a la base de datos
 
 

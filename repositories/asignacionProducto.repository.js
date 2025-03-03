@@ -9,19 +9,20 @@ class AsignacionProductoRepository {
             .populate('producto');
         return asignaciones;
     }
+    
     inactiveStatusAsignacionProducto(asignacionProductoId) {
         return AsignacionProducto.findByIdAndUpdate(asignacionProductoId, { estado: 'Inactivo' });
-        
     }
-
+    
     async getAllAsignacionesProductosByPersona(personaId) {
         const asignaciones = await AsignacionProducto.find({ persona: personaId })
-            .populate('persona')
             .populate('producto');
         return asignaciones;
     }
-    async createAsignacionProducto(asignacionProducto) {
-        return await AsignacionProducto.create(asignacionProducto);
+    async createAsignacionProducto(personaId, productoId) {
+        const fechaAsignacion = new Date();
+        fechaAsignacion.setHours(0,0,0,0);
+        return await AsignacionProducto.create({ persona: personaId, producto: productoId, fechaAsignacion, estado: 'Activo' });
     }
     
     async getAsignacionProductoById(asignacionProductoId) {

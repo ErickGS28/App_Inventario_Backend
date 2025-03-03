@@ -3,13 +3,14 @@ const AsignacionProductoController = require("../controllers/asignacionProducto.
 const router = express.Router();
 
 
-router.get("/", AsignacionProductoController.getAllAsignacionesActivas);
+router.get("/active", AsignacionProductoController.getAllAsignacionesActivas);
 
-
-router.get("/:id", AsignacionProductoController.getAsignacionProductoById);
-
+router.get("/idPersona/:id", AsignacionProductoController.getAllAsignacionesProductosByPersona);
 
 router.post("/", AsignacionProductoController.createAsignacionProducto);
+router.post("/asignacionProductos", AsignacionProductoController.createAsignacionProductos);
+
+router.get("/:id", AsignacionProductoController.getAsignacionProductoById);
 
 
 router.put("/inactive/:id", AsignacionProductoController.inactiveStatusAsignacionProducto);
